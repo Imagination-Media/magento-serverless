@@ -1,7 +1,7 @@
 <p align="center">
 <img alt="Magento logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Magento.svg/1280px-Magento.svg.png" width="224px"/>
-<img alt="Serverless logo" src="https://user-images.githubusercontent.com/2752551/30404911-d575539c-989d-11e7-9a74-df8533b95c6d.png" width="15%" />
 </p>
+<p align="center"><img alt="Serverless logo" src="https://blog.back4app.com/wp-content/uploads/2020/05/serverless-hosting-providers-1140x515-2-1140x515.png" width="530px" /></p>
 <h2 align="center">
   Serverless Framework for Magento 2
 </h2>
@@ -125,7 +125,7 @@ This module will add a new database table called ***serverless_functions***. On 
 
 <br/>
 
-<p align="center"><img src="https://github.com/Imagination-Media/magento-serverless/blob/master/screenshots/serverless-db.png" alt="Magento extensibility through serverless functions" /><br/><i>Magento serverless extensibility diagram</i></p>
+<p align="center"><img src="https://github.com/Imagination-Media/magento-serverless/blob/master/screenshots/serverless-db.png" alt="Magento extensibility through serverless functions" /><br/><i>The serverless_functions database table</i></p>
 
 ## How the serverless functions are called
 Each hosting provider is going to have its own Magento serverless package, meaning that they are going to extend this serverless module, adding the code that's going to be responsible to make the call to the serverless function on the hosting provider to get back the data.
@@ -163,11 +163,11 @@ interface CloudProviderInterface
 
 <br/>
 
-These provider classes almost must extend the ***ImDigital\Serverless\Model\Cloud\Provider*** abstract class. It has two methods, ***prepareRequestData*** and ***prepareResponseData*** which are used to prepare the data for the request and also to handle the response respectively. The class is available at https://raw.githubusercontent.com/Imagination-Media/magento-serverless/master/Model/Cloud/Provider.php.
+These provider classes almost must extend the ***ImDigital\Serverless\Model\Cloud\Provider*** abstract class. It has two methods, ***prepareRequestData*** and ***prepareResponseData*** which are used to prepare the data for the request and also to handle the response respectively. The class is available at https://github.com/Imagination-Media/magento-serverless/blob/master/Model/Cloud/Provider.php.
 
-An example of a cloud provider implementation can be found at https://raw.githubusercontent.com/Imagination-Media/magento-serverless-gcp/master/Model/Cloud/Provider.php. That's the Google Cloud provider implementation.
+An example of a cloud provider implementation can be found at https://github.com/Imagination-Media/magento-serverless-gcp/blob/master/Model/Cloud/Provider.php. That's the Google Cloud provider implementation.
 
-The cloud providers are configured and added to the list of supported hosting providers by injecting their cloud provider class into the class. We do that by using the etc/di.xml file. For example, this is the configuration for the [Google Cloud package](https://raw.githubusercontent.com/Imagination-Media/magento-serverless-gcp/master/etc/di.xml):
+The cloud providers are configured and added to the list of supported hosting providers by injecting their cloud provider class into the class. We do that by using the etc/di.xml file. For example, this is the configuration for the [Google Cloud package](https://github.com/Imagination-Media/magento-serverless-gcp/blob/master/etc/di.xml):
 
 ```xml
 <?xml version="1.0"?>
@@ -247,7 +247,7 @@ And then, make it to be applied as part of your post-composer install process. Y
 },
 ```
 
-This patch file is also available on this repository: https://raw.githubusercontent.com/Imagination-Media/magento-serverless/master/di-patch.patch
+This patch file is also available on this repository: https://github.com/Imagination-Media/magento-serverless/blob/master/di-patch.patch.
 
 </br>
 </br>
