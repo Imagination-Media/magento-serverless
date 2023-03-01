@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="serverless_functions" resource="default" engine="innodb" comment="Serverless functions connected with Magento">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="name" length="255" nullable="false" comment="Function name"/>
+        <column xsi:type="text" name="description" nullable="false" comment="Describe what the function is going to do"/>
+        <column xsi:type="varchar" name="cloud_provider" length="255" nullable="false" comment="Cloud provider where the function is hosted"/>
+        <column xsi:type="varchar" name="observed_event" length="255" nullable="false" comment="Magento observer event"/>
+        <column xsi:type="smallint" name="is_enabled" nullable="false" default="1" comment="Is it enabled"/>
+        <column xsi:type="longtext" name="cloud_config" nullable="false" comment="Cloud provider configuration"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="SERVERLESS_FUNCTIONS_NAME">
+            <column name="name"/>
+        </constraint>
+    </table>
+</schema>

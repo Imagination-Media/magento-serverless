@@ -1,0 +1,16 @@
+{
+    "serverless_functions": {
+        "column": {
+            "id": true,
+            "name": true,
+            "description": true,
+            "cloud_provider": true,
+            "observed_event": true,
+            "is_enabled": true,
+            "cloud_config": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "name": "imdigital/magento-serverless",
+    "description": "Use serverless functions to extend Magento 2",
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "authors": [
+        {
+        "name": "Igor Ludgero Miura",
+        "email": "igor@imdigital.com",
+        "homepage": "https://www.imdigital.com/",
+        "role": "Senior Software Engineer"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "version": "1.0.0",
+    "require": {
+        "php": ">=8.1",
+        "magento/framework": "103.0.*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "ImDigital\\Serverless\\": ""
+        }
+    },
+    "archive": {
+        "exclude": ["screenshots", "di-patch.patch", ".gitignore"]
+    }
+}

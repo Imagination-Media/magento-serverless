@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- Generate the serverless deploy config after an item was inserted into the database -->
+    <event name="serverless_function_after_save">
+        <observer name="generate_config_after_save" instance="ImDigital\Serverless\Observer\GenerateConfig" />
+    </event>
+
+    <!-- Generate the serverless deploy config after an item is deleted from the database -->
+    <event name="serverless_function_after_delete">
+        <observer name="generate_config_after_delete" instance="ImDigital\Serverless\Observer\GenerateFunction" />
+    </event>
+</config>

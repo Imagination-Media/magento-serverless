@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Interfaces -->
+    <preference for="ImDigital\Serverless\Api\Data\ServerlessFunctionInterface" type="ImDigital\Serverless\Model\ServerlessFunction" />
+    <preference for="ImDigital\Serverless\Api\ServerlessFunctionRepositoryInterface" type="ImDigital\Serverless\Model\ServerlessFunctionRepository" />
+
+    <!-- Log file -->
+    <type name="ImDigital\Serverless\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <virtualType name="ImDigital\Serverless\Logger\Logger" type="Monolog\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">serverlessLogger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">ImDigital\Serverless\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Inject log file -->
+    <type name="ImDigital\Serverless\Model\ServerlessFunctionConfigRepository">
+        <arguments>
+            <argument name="logger" xsi:type="object">ImDigital\Serverless\Logger\Logger</argument>
+        </arguments>
+    </type>
+
+    <!-- CLI Command -->
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="serverlessDeployConfig" xsi:type="object">ImDigital\Serverless\Console\Command\Deploy</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--How to inject cloud provider -->
+    <!--<type name="ImDigital\Serverless\Model\ServerlessFunctionConfigRepository">
+        <arguments>
+            <argument name="cloudProviders" xsi:type="array">
+                <item name="aws" xsi:type="object">ImDigital\Serverless\Model\Cloud\Provider\Aws</item>
+                <item name="azure" xsi:type="object">ImDigital\Serverless\Model\Cloud\Provider\Azure</item>
+                <item name="gcp" xsi:type="object">ImDigital\Serverless\Model\Cloud\Provider\GoogleCloud</item>
+            </argument>
+        </arguments>
+    </type>-->
+</config>
