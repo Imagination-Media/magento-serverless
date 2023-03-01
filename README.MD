@@ -200,6 +200,12 @@ As part of our roadmap, we will add an interface to the Magento admin where we c
 <br/>
 
 # Installation
+## Requirements
+- Magento >= 2.4.5-p1
+- PHP >= 8.1
+
+<br/>
+
 ## Installing the module and enabling it
 
 To install this module we must run the composer require command requesting its installation:
