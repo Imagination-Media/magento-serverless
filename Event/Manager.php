@@ -85,9 +85,6 @@ class Manager extends CoreManager
          * @var $serverlessFunction \ImDigital\Serverless\Model\ServerlessFunction
          */
         if ($eventName) {
-            // if ($eventName == 'catalog_product_save_after') {
-            //     $a = 1;
-            // }
             foreach ($this->serverlessFunctionConfigRepository->getFunctionsByEvent($eventName) as $serverlessFunction
             ) {
                 \Magento\Framework\Profiler::start('SERVERLESS:' . $serverlessFunction->getName());

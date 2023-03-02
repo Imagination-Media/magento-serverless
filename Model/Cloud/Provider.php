@@ -26,10 +26,6 @@ abstract class Provider
     {
         $finalData = [];
         foreach ($data as $key => $value) {
-            // if ($key === 'extension_attributes') {
-            //     $a = 1;
-            // }
-
             if (is_object($value)) {
                 if (method_exists($value, 'getData')) {
                     $finalData[$key] = $value->getData();
