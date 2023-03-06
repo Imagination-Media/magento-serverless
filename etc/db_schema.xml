@@ -18,7 +18,7 @@
         <column xsi:type="varchar" name="name" length="255" nullable="false" comment="Function name"/>
         <column xsi:type="text" name="description" nullable="false" comment="Describe what the function is going to do"/>
         <column xsi:type="varchar" name="cloud_provider" length="255" nullable="false" comment="Cloud provider where the function is hosted"/>
-        <column xsi:type="varchar" name="observed_event" length="255" nullable="false" comment="Magento observer event"/>
+        <column xsi:type="varchar" name="observed_event" length="255" nullable="true" comment="Magento observer event"/>
         <column xsi:type="smallint" name="is_enabled" nullable="false" default="1" comment="Is it enabled"/>
         <column xsi:type="longtext" name="cloud_config" nullable="false" comment="Cloud provider configuration"/>
 
