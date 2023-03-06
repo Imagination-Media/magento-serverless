@@ -16,9 +16,11 @@ declare(strict_types=1);
 namespace ImDigital\Serverless\Model;
 
 use ImDigital\Serverless\Api\Data\ServerlessFunctionInterface;
+use ImDigital\Serverless\Model\Cloud\Provider as AbstractProvider;
 use ImDigital\Serverless\Model\ResourceModel\ServerlessFunction\Collection;
 use ImDigital\Serverless\Model\ServerlessFunction;
 use ImDigital\Serverless\Model\ServerlessFunctionFactory;
+use Magento\Framework\App\ObjectManager;
 use Psr\Log\LoggerInterface;
 
 class ServerlessFunctionConfigRepository
@@ -93,6 +95,11 @@ class ServerlessFunctionConfigRepository
             $jsonContent["functions"][] = $data;
         }
 
+        // Loop through all cloud provider froms the $cloudProviders variable, and add them to the $jsonContent variable on the "cloudProviders" key
+        foreach ($this->cloudProviders as $providerCode => $providerClass) {
+            $jsonContent["cloudProviders"][$providerCode] = $providerClass::class;
+        }
+
         // Write the file
         try {
             file_put_contents($filePath, json_encode($jsonContent));
@@ -158,5 +165,38 @@ class ServerlessFunctionConfigRepository
         }
 
         return $functions;
+    }
+
+    /**
+     * Get cloud provider by code
+     * This is going to be used on the shipping and payment serverless modules, that's why it's using object manager
+     * Please avoid to use this method if not in the context described above
+     * @param string $code
+     * @return AbstractProvider
+     * @throws \Exception
+     */
+    public function getCloudProviderByCode(string $code): AbstractProvider
+    {
+        $filePath = isset($_ENV['MAGENTO_SERVERLESS_FILE_PATH'])
+            ? $_ENV['MAGENTO_SERVERLESS_FILE_PATH'] : BP . DIRECTORY_SEPARATOR . self::FILE_PATH;
+
+        if (!file_exists($filePath)) {
+            $this->logger->error("Can't find the {$filePath} JSON file when trying to get the cloud providers.");
+            return [];
+        }
+
+        $jsonContent = json_decode(file_get_contents($filePath), true);
+
+        if (!isset($jsonContent["cloudProviders"])) {
+            $this->logger->error("Can't find the cloudProviders key in the {$filePath} JSON file.");
+            return [];
+        }
+
+        if (!isset($jsonContent["cloudProviders"][$code])) {
+            $this->logger->error("Can't find the cloud provider {$code} in the {$filePath} JSON file.");
+            return [];
+        }
+
+        return ObjectManager::getInstance()->create($jsonContent["cloudProviders"][$code]);
     }
 }
