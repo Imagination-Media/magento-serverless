@@ -1,0 +1,26 @@
+Back,Back
+Save,Save
+"Edit Serverless Function","Edit Serverless Function"
+"Add New Serverless Function","Add New Serverless Function"
+"Serverless Functions","Serverless Functions"
+"%1 items were removed.","%1 items were removed."
+"An item was removed.","An item was removed."
+"There is no item to be removed.","There is no item to be removed."
+"Serverless function successfully updated","Serverless function successfully updated"
+"Serverless function successfully created","Serverless function successfully created"
+"Serverless function not saved. Please check the logs","Serverless function not saved. Please check the logs"
+"-- Please Select --","-- Please Select --"
+Edit,Edit
+"Connected Functions","Connected Functions"
+"Serverless Function:","Serverless Function:"
+Name,Name
+Description,Description
+"Cloud Provider","Cloud Provider"
+"Observed Event","Observed Event"
+"Is Enabled","Is Enabled"
+"Cloud Config","Cloud Config"
+"Connect New","Connect New"
+"Disconnect and Remove","Disconnect and Remove"
+"Are you sure to disconnect and remove these functions?","Are you sure to disconnect and remove these functions?"
+ID,ID
+Enabled,Enabled

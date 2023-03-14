@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Serverless
+ *
+ * Use serverless function to modify the Magento business logic.
+ *
+ * @package ImDigital\Serverless
+ * @author Igor Ludgero Miura <igor@imdigital.com>
+ * @copyright Copyright (c) 2023 Imagination Media (https://www.imdigital.com/)
+ * @license Private
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="serverless_function_listing"/>
+        </referenceContainer>
+    </body>
+</page>

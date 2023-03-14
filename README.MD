@@ -1,7 +1,6 @@
 <p align="center">
 <img alt="Magento logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Magento.svg/1280px-Magento.svg.png" width="224px"/>
 </p>
-<p align="center"><img alt="Serverless logo" src="https://blog.back4app.com/wp-content/uploads/2020/05/serverless-hosting-providers-1140x515-2-1140x515.png" width="530px" /></p>
 <h2 align="center">
   Serverless Framework for Magento 2
 </h2>
@@ -194,7 +193,12 @@ The command is:
 php bin/magento serverless:deploy:config
 ```
 
-As part of our roadmap, we will add an interface to the Magento admin where we can manage these serverless functions, enable/disable them, etc. For now, we can only add these functions directly to the database.
+<br/>
+
+## Admin management interface
+Once the extension is installed, you'll see a new item on the left navigation menu, called Serverless. This menu has a "Manage" option where we can see the connected serverless functions, manage them, and also add new ones.
+
+
 
 <br/>
 <br/>
@@ -318,10 +322,14 @@ If the SKU that's being added to the cart is ***24-MB04*** then it won't be adde
 
 That's all that we need. And if we need to modify this business logic, we just need to modify it directly on the hosting provider, deploy it, and that's it. In a couple of seconds, it's live and no deployment on the website was needed.
 
+<p align="center"><img src="https://github.com/Imagination-Media/magento-serverless/blob/master/screenshots/serverless-menu.png" alt="The serverless menu item" /><br/><i>The serverless menu item</i></p>
+
+</br>
+
+<p align="center"><img src="https://github.com/Imagination-Media/magento-serverless/blob/master/screenshots/serverless-db.png" alt="The serverless management interface" /><br/><i>The serverless management interface</i></p>
 
 <br/>
 <br/>
 
 # Roadmap
-- Create an admin interface to manage serverless functions.
 - Add asynchronous serverless functions support.

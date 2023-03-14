@@ -1,0 +1,26 @@
+Back,Atrás
+Save,Guardar
+"Edit Serverless Function","Editar función sin servidor"
+"Add New Serverless Function","Añadir nueva función sin servidor"
+"Serverless Functions","Funciones sin servidor"
+"%1 items were removed.","Se eliminaron %1 elementos."
+"An item was removed.","Se eliminó un elemento."
+"There is no item to be removed.","No hay elementos para eliminar."
+"Serverless function successfully updated","Función sin servidor actualizada correctamente"
+"Serverless function successfully created","Función sin servidor creada correctamente"
+"Serverless function not saved. Please check the logs","No se pudo guardar la función sin servidor. Por favor, revise los registros."
+"-- Please Select --","-- Por favor seleccione --"
+Edit,Editar
+"Connected Functions","Funciones conectadas"
+"Serverless Function:","Función sin servidor:"
+Name,Nombre
+Description,Descripción
+"Cloud Provider","Proveedor de nube"
+"Observed Event","Evento observado"
+"Is Enabled","Está habilitado"
+"Cloud Config","Configuración de nube"
+"Connect New","Conectar nueva"
+"Disconnect and Remove","Desconectar y eliminar"
+"Are you sure to disconnect and remove these functions?","¿Está seguro de desconectar y eliminar estas funciones?"
+ID,ID
+Enabled,Habilitado

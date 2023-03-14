@@ -17,6 +17,7 @@ namespace ImDigital\Serverless\Model;
 
 use ImDigital\Serverless\Api\Data\ServerlessFunctionInterface;
 use ImDigital\Serverless\Api\ServerlessFunctionRepositoryInterface;
+use ImDigital\Serverless\Model\ResourceModel\ServerlessFunction as ResourceModel;
 use ImDigital\Serverless\Model\ResourceModel\ServerlessFunction\Collection;
 use ImDigital\Serverless\Model\ResourceModel\ServerlessFunction\CollectionFactory;
 
@@ -28,12 +29,20 @@ class ServerlessFunctionRepository implements ServerlessFunctionRepositoryInterf
     protected CollectionFactory $serverlessFunctionCollectionFactory;
 
     /**
-     * void
+     * @var ResourceModel
+     */
+    protected ResourceModel $resourceModel;
+
+    /**
+     * @param CollectionFactory $collectionFactory
+     * @param ResourceModel $resourceModel
      */
     public function __construct(
-        CollectionFactory $collectionFactory
+        CollectionFactory $collectionFactory,
+        ResourceModel $resourceModel
     ) {
         $this->serverlessFunctionCollectionFactory = $collectionFactory;
+        $this->resourceModel = $resourceModel;
     }
     
     /**
@@ -54,5 +63,35 @@ class ServerlessFunctionRepository implements ServerlessFunctionRepositoryInterf
 
         $collection->addFieldToFilter(ServerlessFunctionInterface::IS_ENABLED, 1);
         return $collection;
+    }
+
+    /**
+     * @api
+     * @param ServerlessFunctionInterface $serverlessFunctionInterface
+     * @return bool
+     */
+    public function delete(ServerlessFunctionInterface $serverlessFunctionInterface): bool
+    {
+        try {
+            $this->resourceModel->delete($serverlessFunctionInterface);
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * @api
+     * @param ServerlessFunctionInterface $serverlessFunctionInterface
+     * @return bool
+     */
+    public function save(ServerlessFunctionInterface $serverlessFunctionInterface): bool
+    {
+        try {
+            $this->resourceModel->save($serverlessFunctionInterface);
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }

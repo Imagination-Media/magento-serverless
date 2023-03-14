@@ -1,0 +1,27 @@
+<!--
+/**
+ * Serverless Shipping
+ *
+ * Calculate shipping rates using a serverless function.
+ *
+ * @package ImDigital\ServerlessShipping
+ * @author Igor Ludgero Miura <igor@imdigital.com>
+ * @copyright Copyright (c) 2023 Imagination Media (https://www.imdigital.com/)
+ * @license Private
+ */
+-->
+<input class="admin__control-text cloud_config_input" style="display: none;" afterRender="onReadyFunction" type="text"
+    data-bind="
+        event: {change: userChanges},
+        value: value,
+        hasFocus: focused,
+        valueUpdate: valueUpdate,
+        attr: {
+            name: inputName,
+            placeholder: placeholder,
+            'aria-describedby': noticeId,
+            id: uid
+        }
+    "/>
+
+<div id="cloud_config_jsoneditor" style="width: 100%; height: 400px;"></div>

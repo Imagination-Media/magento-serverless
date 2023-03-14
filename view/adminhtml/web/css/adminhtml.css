@@ -1,0 +1,8 @@
+.admin__menu #menu-imdigital-serverless-main > a:before {
+    content: '';
+    background-image: url('../images/icon-serverless.png');
+    background-size: 30px 26px;
+    height: 28px;
+    margin: 0 auto;
+    width: 30px;
+}

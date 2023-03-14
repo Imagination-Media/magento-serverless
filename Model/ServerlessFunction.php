@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace ImDigital\Serverless\Model;
 
 use ImDigital\Serverless\Api\Data\ServerlessFunctionInterface;
+use ImDigital\Serverless\Model\ResourceModel\ServerlessFunction as ResourceModel;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Model\AbstractModel;
@@ -53,6 +54,14 @@ class ServerlessFunction extends AbstractModel implements ServerlessFunctionInte
     ) {
         $this->encryptor = $encryptor;
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
+    }
+
+    /**
+     * @return void
+     */
+    protected function _construct()
+    {
+        $this->_init(ResourceModel::class);
     }
 
     /**

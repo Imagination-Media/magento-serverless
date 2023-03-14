@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Serverless
+ *
+ * Use serverless function to modify the Magento business logic.
+ *
+ * @package ImDigital\Serverless
+ * @author Igor Ludgero Miura <igor@imdigital.com>
+ * @copyright Copyright (c) 2023 Imagination Media (https://www.imdigital.com/)
+ * @license Private
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">serverless_function_listing.serverless_function_listing_data_source</item>
+            <item name="deps" xsi:type="string">serverless_function_listing.serverless_function_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">serverless_function_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Connect New</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">serverless/function/edit</item>
+            </item>
+        </item>
+    </argument>
+    <dataSource name="serverless_function_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">
+                ServerlessFunctionGridDataProvider
+            </argument>
+            <argument name="name" xsi:type="string">serverless_function_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction">
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Disconnect and Remove</item>
+                        <item name="url" xsi:type="url" path="serverless/function/massDelete" />
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Disconnect and Remove</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure to disconnect and remove these functions?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsProvider" xsi:type="string">
+                        serverless_function_listing.serverless_function_listing.serverless_function_columns
+                    </item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">
+                            serverless_function_listing.serverless_function_listing.listing_top.bookmarks
+                        </item>
+                        <item name="namespace" xsi:type="string">current.filters</item>
+                    </item>
+                    <item name="childDefaults" xsi:type="array">
+                        <item name="provider" xsi:type="string">
+                            serverless_function_listing.serverless_function_listing.listing_top.listing_filters
+                        </item>
+                        <item name="imports" xsi:type="array">
+                            <item name="visible" xsi:type="string">
+                                serverless_function_listing.serverless_function_listing.serverless_function_columns.${ $.index }:visible
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </filters>
+        <paging name="listing_paging">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">
+                            serverless_function_listing.serverless_function_listing.listing_top.bookmarks
+                        </item>
+                        <item name="namespace" xsi:type="string">current.paging</item>
+                    </item>
+                    <item name="selectProvider" xsi:type="string">
+                        serverless_function_listing.serverless_function_listing.serverless_function_columns.ids
+                    </item>
+                </item>
+            </argument>
+        </paging>
+    </listingToolbar>
+    <columns name="serverless_function_columns">
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeDefaultWidth" xsi:type="string">55</item>
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <resizeDefaultWidth>25</resizeDefaultWidth>
+            </settings>
+        </column>
+        <column name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="filter" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+        <column name="description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Description</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+            </argument>
+        </column>
+        <column name="cloud_provider">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">ImDigital\Serverless\Model\Config\Source\Provider</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Cloud Provider</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                </item>
+            </argument>
+        </column>
+        <column name="observed_event">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">ImDigital\Serverless\Model\Config\Source\Event</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Observed Event</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                </item>
+            </argument>
+        </column>
+        <column name="is_enabled">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Enabled</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                </item>
+            </argument>
+        </column>
+        <actionsColumn name="actions" class="ImDigital\Serverless\Ui\Component\Listing\Column\Action\Edit">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+</listing>

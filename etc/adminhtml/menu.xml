@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Serverless
+ *
+ * Use serverless function to modify the Magento business logic.
+ *
+ * @package ImDigital\Serverless
+ * @author Igor Ludgero Miura <igor@imdigital.com>
+ * @copyright Copyright (c) 2023 Imagination Media (https://www.imdigital.com/)
+ * @license Private
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!-- Main menu element -->
+        <add id="ImDigital_Serverless::main" title="Serverless" module="ImDigital_Serverless" sortOrder="70" resource="Magento_Backend::content" />
+
+        <!-- Main serverless functions element -->
+        <add id="ImDigital_Serverless::functions" title="Connected Functions" translate="title" module="ImDigital_Serverless"
+             sortOrder="10" resource="Magento_Backend::content" parent="ImDigital_Serverless::main" />
+
+        <!-- Manage -->
+        <add id="ImDigital_Serverless::manage" title="Manage" module="ImDigital_Serverless" sortOrder="11"
+             parent="ImDigital_Serverless::functions" action="serverless/function/index" resource="Magento_Backend::content" />
+    </menu>
+</config>

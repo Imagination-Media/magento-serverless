@@ -169,8 +169,6 @@ class ServerlessFunctionConfigRepository
 
     /**
      * Get cloud provider by code
-     * This is going to be used on the shipping and payment serverless modules, that's why it's using object manager
-     * Please avoid to use this method if not in the context described above
      * @param string $code
      * @return AbstractProvider
      * @throws \Exception

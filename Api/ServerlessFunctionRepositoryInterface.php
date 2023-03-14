@@ -15,6 +15,7 @@ declare(strict_types=1);
 
 namespace ImDigital\Serverless\Api;
 
+use ImDigital\Serverless\Api\Data\ServerlessFunctionInterface;
 use ImDigital\Serverless\Model\ResourceModel\ServerlessFunction\Collection;
 
 interface ServerlessFunctionRepositoryInterface
@@ -25,4 +26,18 @@ interface ServerlessFunctionRepositoryInterface
      * @return Collection
      */
     public function getFunctionsByEvent(?string $eventName = null): Collection;
+
+    /**
+     * @api
+     * @param ServerlessFunctionInterface $serverlessFunctionInterface
+     * @return bool
+     */
+    public function delete(ServerlessFunctionInterface $serverlessFunctionInterface): bool;
+
+    /**
+     * @api
+     * @param ServerlessFunctionInterface $serverlessFunctionInterface
+     * @return bool
+     */
+    public function save(ServerlessFunctionInterface $serverlessFunctionInterface): bool;
 }

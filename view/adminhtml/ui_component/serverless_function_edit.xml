@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Serverless
+ *
+ * Use serverless function to modify the Magento business logic.
+ *
+ * @package ImDigital\Serverless
+ * @author Igor Ludgero Miura <igor@imdigital.com>
+ * @copyright Copyright (c) 2023 Imagination Media (https://www.imdigital.com/)
+ * @license Private
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">serverless_function_edit.serverless_function_edit_data_source</item>
+            <item name="deps" xsi:type="string">serverless_function_edit.serverless_function_edit_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Serverless Function:</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">serverless_function_edit</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">ImDigital\Serverless\Block\Adminhtml\Function\Edit\BackButton</item>
+            <item name="delete" xsi:type="string">ImDigital\Serverless\Block\Adminhtml\Function\Edit\DeleteButton</item>
+            <item name="save" xsi:type="string">ImDigital\Serverless\Block\Adminhtml\Function\Edit\SaveButton</item>
+        </item>
+    </argument>
+    <dataSource name="serverless_function_edit_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">ImDigital\Serverless\Ui\DataProvider\ServerlessFunction</argument>
+            <argument name="name" xsi:type="string">serverless_function_edit_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="serverless/function/save" />
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string"/>
+            </item>
+        </argument>
+        <field name="id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">serverless_function</item>
+                    <item name="dataScope" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">serverless_function</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
+                    <item name="dataScope" xsi:type="string">name</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Description</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">serverless_function</item>
+                    <item name="sortOrder" xsi:type="number">2</item>
+                    <item name="dataScope" xsi:type="string">description</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="cloud_provider">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">ImDigital\Serverless\Model\Config\Source\Provider</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Cloud Provider</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">serverless_function</item>
+                    <item name="sortOrder" xsi:type="number">3</item>
+                    <item name="dataScope" xsi:type="string">cloud_provider</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="observed_event">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">ImDigital\Serverless\Model\Config\Source\Event</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Observed Event</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">serverless_function</item>
+                    <item name="sortOrder" xsi:type="number">4</item>
+                    <item name="dataScope" xsi:type="string">observed_event</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="is_enabled">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Is Enabled</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">serverless_function</item>
+                    <item name="sortOrder" xsi:type="number">5</item>
+                    <item name="dataScope" xsi:type="string">is_enabled</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="cloud_config">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">ImDigital_Serverless/js/form/element/json-editor</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="label" xsi:type="string" translate="true">Cloud Config</item>
+                    <item name="source" xsi:type="string">serverless_function</item>
+                    <item name="dataScope" xsi:type="string">cloud_config</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>
