@@ -179,6 +179,16 @@ The cloud providers are configured and added to the list of supported hosting pr
             </argument>
         </arguments>
     </type>
+    <type name="ImDigital\Serverless\Model\Config\Source\Provider">
+        <arguments>
+            <argument name="cloudProviders" xsi:type="array">
+                <item name="gcp" xsi:type="array">
+                    <item name="label" xsi:type="string">Google Cloud</item>
+                    <item name="value" xsi:type="string">gcp</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
 </config>
 ```
 
