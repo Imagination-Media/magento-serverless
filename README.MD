@@ -322,11 +322,11 @@ If the SKU that's being added to the cart is ***24-MB04*** then it won't be adde
 
 That's all that we need. And if we need to modify this business logic, we just need to modify it directly on the hosting provider, deploy it, and that's it. In a couple of seconds, it's live and no deployment on the website was needed.
 
-<p align="center"><img src="https://github.com/Imagination-Media/magento-serverless/blob/master/screenshots/serverless-menu.png" alt="The serverless menu item" /><br/><i>The serverless menu item</i></p>
+<p align="center"><img src="https://github.com/Imagination-Media/magento-serverless/blob/master/screenshots/serverless-menu.png" alt="The serverless menu item" style="width: 30%;" /><br/><i>The serverless menu item</i></p>
 
 </br>
 
-<p align="center"><img src="https://github.com/Imagination-Media/magento-serverless/blob/master/screenshots/serverless-db.png" alt="The serverless management interface" /><br/><i>The serverless management interface</i></p>
+<p align="center"><img src="https://github.com/Imagination-Media/magento-serverless/blob/master/screenshots/serverless-ui.png" alt="The serverless management interface" style="width: 30%;" /><br/><i>The serverless management interface</i></p>
 
 <br/>
 <br/>
