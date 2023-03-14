@@ -326,7 +326,7 @@ That's all that we need. And if we need to modify this business logic, we just n
 
 </br>
 
-<p align="center"><img src="https://github.com/Imagination-Media/magento-serverless/blob/master/screenshots/serverless-ui.png" alt="The serverless management interface" style="width: 30%;" /><br/><i>The serverless management interface</i></p>
+<p align="center"><img src="https://github.com/Imagination-Media/magento-serverless/blob/master/screenshots/serverless-ui.png" alt="The serverless management interface" /><br/><i>The serverless management interface</i></p>
 
 <br/>
 <br/>
